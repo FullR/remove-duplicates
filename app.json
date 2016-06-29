@@ -1,0 +1,5 @@
+{
+  "name": "Remove Duplicate Emails",
+  "description": "A simple demonstration of an algorithm for filtering duplicate emails from a list",
+  "repository": "https://github.com/FullR/remove-duplicates"
+}
