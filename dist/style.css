@@ -1,0 +1,59 @@
+body {
+  background: #ddd;
+  color: #222;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+main {
+  width: 980px;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 22px;
+  margin-bottom: 40px;
+  margin-top: 0;
+}
+
+textarea {
+  width: 100%;
+  min-height: 250px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid #888;
+}
+
+button {
+  padding: 10px 15px 10px 15px;
+  margin: 0;
+  font-size: 22px;
+  border-radius: 10px;
+  background: #337ab7;
+  color: #FFF;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  background: #286090;
+}
+
+button:active {
+  background: #204d74;
+}
+
+.content {
+  width: 100%;
+  padding: 45px;
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.filter-button {
+  margin: 40px 0 40px;
+}
+
+.filter-time-output {
+  margin-top: 10px;
+}

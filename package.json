@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "build": "cp lib/index.html dist && cp lib/style.css dist && browserify lib/client.js -o dist/client.js",
+    "start": "node index.js",
+    "test": "mocha"
   },
   "author": "James Meyers",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "mocha": "^2.5.3"
   }
 }
