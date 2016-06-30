@@ -14,6 +14,10 @@ main {
 p {
   font-size: 22px;
   margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+p:first-child {
   margin-top: 0;
 }
 
@@ -60,7 +64,7 @@ button:active {
   margin-top: 10px;
 }
 
-.filter-duplicate-code {
+.code {
   overflow: auto;
   background: #272822;
   color: #FFF;

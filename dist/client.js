@@ -11,14 +11,14 @@ const elements = {
   emailInput: $(".email-input"),
   filteredEmailOutput: $(".filtered-email-output"),
   filterTimeOutput: $(".filter-time-output"),
-  filterDuplicateCode: $(".filter-duplicate-code")
+  code: $(".code")
 };
 
 // render default email list
 elements.emailInput.value = defaultEmailList.join(",\n");
 
-// render source code for filterDuplicateCode
-elements.filterDuplicateCode.textContent = filterDuplicate.toString();
+// render source code for code
+elements.code.textContent = filterDuplicate.toString();
 
 elements.filterButton.addEventListener("click", () => {
   const inputEmailList = elements.emailInput.value
@@ -200,23 +200,21 @@ module.exports=[
 ]
 
 },{}],3:[function(require,module,exports){
-const ignoreChars = /\.|\+/;
 
 // takes an array of values and returns a new array with duplicates removed
 module.exports = function filterDuplicate(arr) {
   const unique = [];
   const length = arr.length;
-  const uniqueLookupMap = {}; // used to quickly lookup whether or not a value has been encountered
+  const uniqueLookupMap = {}; // used to quickly determine if a value has been encountered yet
 
   for(let i = 0; i < length; i++) {
     const value = arr[i];
-    const [name, domain] = value.split("@");
-    const normalizedValue = `${name.toLowerCase().replace(ignoreChars, "")}@${domain || ""}`//value.toLowerCase().replace(ignoreChars, "");
-    if(!(normalizedValue in uniqueLookupMap)) { // check if value is unique
-      uniqueLookupMap[normalizedValue] = true;
+    if(!(value in uniqueLookupMap)) { // check if value is unique
+      uniqueLookupMap[value] = true;
       unique.push(value);
     }
   }
+
   return unique;
 }
 
