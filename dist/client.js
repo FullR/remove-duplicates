@@ -17,16 +17,17 @@ const elements = {
 // render default email list
 elements.emailInput.value = defaultEmailList.join(",\n");
 
-// render source code for code
+// render source code for filterDuplicate
 elements.code.textContent = filterDuplicate.toString();
 
+// process input data when the filterButton is clicked and output to filteredEmailOutput
 elements.filterButton.addEventListener("click", () => {
   const inputEmailList = elements.emailInput.value
     .split(",")
     .map((s) => s.trim()) // cut off whitespace
     .filter((s) => s.length > 0); // remove blank lines
 
-
+  // run and time filterDuplicate
   const {result, elapsed} = timeFunction(() => filterDuplicate(inputEmailList));
 
   elements.filteredEmailOutput.value = result.join(",\n");
@@ -223,20 +224,18 @@ module.exports = function filterDuplicate(arr) {
 function timeFunction(fn) {
   const startTime = Date.now();
   const result = fn();
-  return {
-    result,
-    elapsed: Date.now() - startTime
-  };
-}
-
-// returns a random value in arr
-function sample(arr) {
-  return arr[randomInt(arr.length)];
+  const elapsed = Date.now() - startTime;
+  return {result, elapsed};
 }
 
 // returns a random integer between 0 and max (inclusive/exclusive)
 function randomInt(max) {
   return Math.floor(Math.random() * max);
+}
+
+// returns a random value in arr
+function sample(arr) {
+  return arr[randomInt(arr.length)];
 }
 
 module.exports = {
