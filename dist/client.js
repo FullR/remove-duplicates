@@ -10,11 +10,15 @@ const elements = {
   filterButton: $(".filter-button"),
   emailInput: $(".email-input"),
   filteredEmailOutput: $(".filtered-email-output"),
-  filterTimeOutput: $(".filter-time-output")
+  filterTimeOutput: $(".filter-time-output"),
+  filterDuplicateCode: $(".filter-duplicate-code")
 };
 
 // render default email list
 elements.emailInput.value = defaultEmailList.join(",\n");
+
+// render source code for filterDuplicateCode
+elements.filterDuplicateCode.textContent = filterDuplicate.toString();
 
 elements.filterButton.addEventListener("click", () => {
   const inputEmailList = elements.emailInput.value
@@ -196,6 +200,8 @@ module.exports=[
 ]
 
 },{}],3:[function(require,module,exports){
+const ignoreChars = /\.|\+/;
+
 // takes an array of values and returns a new array with duplicates removed
 module.exports = function filterDuplicate(arr) {
   const unique = [];
@@ -204,8 +210,10 @@ module.exports = function filterDuplicate(arr) {
 
   for(let i = 0; i < length; i++) {
     const value = arr[i];
-    if(!(value in uniqueLookupMap)) { // check if value is unique
-      uniqueLookupMap[value] = true;
+    const [name, domain] = value.split("@");
+    const normalizedValue = `${name.toLowerCase().replace(ignoreChars, "")}@${domain || ""}`//value.toLowerCase().replace(ignoreChars, "");
+    if(!(normalizedValue in uniqueLookupMap)) { // check if value is unique
+      uniqueLookupMap[normalizedValue] = true;
       unique.push(value);
     }
   }
